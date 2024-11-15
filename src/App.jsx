@@ -10,6 +10,7 @@ function App() {
   const start = async () => {
     setLoading(true); // Show loading when starting
     setStarted(true);
+    setCount(1); // Initialize count to 1 when starting
     try {
       const response = await fetch(`https://dummyjson.com/posts/1`);
       if (!response.ok) {
@@ -27,10 +28,10 @@ function App() {
   };
 
   const next = () => setCount(count + 1);
-  const prev = () => setCount(count > 1 ? count - 1 : 1);
+  const prev = () => setCount(count - 1);
 
   useEffect(() => {
-    if (!started || count === 1) return; // Skip fetching when starting
+    if (!started || count === 1); // Skip fetching when starting
     const fetchArticle = async () => {
       try {
         const response = await fetch(`https://dummyjson.com/posts/${count}`);
